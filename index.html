@@ -14,7 +14,7 @@
             Sky<span class="bg-gradient-to-r from-purple-900 to-indigo-500 bg-clip-text text-transparent">Snap</span>
         </div>
 
-        <div class="search_bar hidden">
+        <div class="header_search_bar hidden">
             <div>
                 <div class="flex ">
                     <input type="text"
@@ -34,18 +34,20 @@
         </div>
 
     </nav>
-    <main class=" h-[80vh] text-gray-300 flex justify-center items-center  ">
-        <div class="default_text text-[3rem] font-bold mb-[10rem] flex flex-col items-center">
+    <main class=" main_tag h-[80vh] text-gray-300 flex justify-center items-center  ">
+        <div class="text_and_search text-[3rem] font-bold mb-[10rem] flex flex-col items-center">
             <span class="leading-[25px]">Enter your city to instantly</span>
-            <span class="leading-[80px]">check the current <span class="bg-gradient-to-r from-teal-400 to-sky-600 bg-clip-text text-transparent">weather</span> forecast</span>
+            <span class="leading-[80px]">check the current <span
+                    class="bg-gradient-to-r from-teal-400 to-sky-600 bg-clip-text text-transparent">weather</span>
+                forecast</span>
 
             <div class="search_bar ">
                 <div>
                     <div class="flex ">
                         <input type="text"
-                            class="w-[30vw]  lg:ml-[1vw]  xl::ml-[55vw] 2xl:ml-[75vw] ml-[40vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw] h-[7vh]">
+                            class=" search_bar w-[30vw]  lg:ml-[1vw]  xl::ml-[55vw] 2xl:ml-[75vw] ml-[40vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw] h-[7vh]">
                         <input type="image" src="search_icon.svg"
-                            class="   bg-gray-800 p-2 rounded-tr-xl rounded-br-xl  font-semibold hover:bg-gray-900 transition-colors text-white h-[7vh]">
+                            class=" search_btn  bg-gray-800 p-2 rounded-tr-xl rounded-br-xl  font-semibold hover:bg-gray-900 transition-colors text-white h-[7vh]">
                     </div>
                 </div>
             </div>
@@ -53,5 +55,6 @@
     </main>
 
 </body>
+<script src="script.js"></script>
 
 </html>
