@@ -7,28 +7,40 @@ let main_tag = document.querySelector(".main_tag");
 // Header Content Elements
 let header_search = document.querySelector(".header_search_bar");
 
+//API key
 const api_key = "8ffa0bebcaefd6f8a9a365de79d992df";
 
 search_button.addEventListener("click", async () => {
   if (search_input.value !== "") {
-    main_content.style.display = "none";
+    
 
-    // Removing class hidden from header_search so that it can appear on the navbar
-    header_search.classList.remove("hidden");
-
-    // Creating Element
-    let weather_container = document.createElement("div");
-    weather_container.style.borderRadius = "15px";
-    weather_container.style.height = "70vh";
-    weather_container.style.width = "30vw";
-    weather_container.style.background = "#142556";
-    weather_container.style.boxShadow = "5px 5px 2px #0b1530, -5px -5px 5px #1d357c";
-    weather_container.style.marginBottom = "35px";
-    main_tag.appendChild(weather_container);
+    
 
     try {
-      let weather_data = await get_weather_response("lahore", api_key);
-      get_weather_info(weather_data);
+      let search_value = search_input.value;
+      let weather_response = await get_weather_response(search_value, api_key);
+      
+
+      if (weather_response.cod === "404") {
+        // Display an error message or take appropriate action
+        console.error("City not found:", weather_response.message);
+        alert("Enter a valid city");
+        return;
+      }
+
+      main_content.style.display = "none";
+      // let weather_container = document.createElement("div");
+      // weather_container.style.borderRadius = "15px";
+      // weather_container.style.height = "70vh";
+      // weather_container.style.width = "30vw";
+      // weather_container.style.background = "#142556";
+      // weather_container.style.boxShadow =
+      //   "5px 5px 2px #0b1530, -5px -5px 5px #1d357c";
+      // weather_container.style.marginBottom = "35px";
+      // main_tag.appendChild(weather_container);
+
+      let weather_data = get_weather_info(weather_response);
+      display_weather_info(weather_data);
     } catch (error) {
       console.error("Error fetching weather data:", error.message);
     }
@@ -48,120 +60,96 @@ search_button.addEventListener("click", async () => {
   }
 
   function get_weather_info(data) {
-    const { name: city, main: { temp, feels_like, humidity }, weather: [{ main }] } = data;
+    const {
+      name: city,
+      main: { temp, feels_like, humidity },
+      weather: [{ main }],
+    } = data;
+    return { city, temp, feels_like, humidity, main };
+  }
+
+  // function getWeatherEmoji(weatherId) {
+  //   switch (true) {
+  //     case weatherId >= 200 && weatherId < 300:
+  //       return "⛈";
+  //     case weatherId >= 300 && weatherId < 400:
+  //       return "🌧";
+  //     case weatherId >= 500 && weatherId < 600:
+  //       return "🌧";
+  //     case weatherId >= 600 && weatherId < 700:
+  //       return "❄";
+  //     case weatherId >= 700 && weatherId < 800:
+  //       return "🌫";
+  //     case weatherId === 800:
+  //       return "☀";
+  //     case weatherId >= 801 && weatherId < 810:
+  //       return "☁";
+  //     default:
+  //       return "❓";
+  //   }
+  // }
+
+
+
+  function display_weather_info(weatherData) {
+    const { city, temp, feels_like, humidity, main } = weatherData;
     console.log("City:", city);
     console.log("Temperature:", temp);
     console.log("Feels Like:", feels_like);
     console.log("Humidity:", humidity);
     console.log("Weather:", main);
+
+   
+
+    // Create and append the main container
+    // weather_container.style.display = "block"
+    const mainContainer = document.createElement("div");
+    mainContainer.classList.add("haha")
+    mainContainer.style.borderRadius = "15px";
+    mainContainer.style.height = "70vh";
+    mainContainer.style.width = "30vw";
+    mainContainer.style.background = "rgb(20, 37, 86)";
+    mainContainer.style.boxShadow =
+      "5px 5px 2px rgb(11, 21, 48), -5px -5px 5px rgb(29, 53, 124)";
+    mainContainer.style.marginBottom = "35px";
+
+    
+
+    // Create and append the inner flex container
+    const innerFlexContainer = document.createElement("div");
+    innerFlexContainer.className =
+      "flex flex-col items-center justify-center text-[1.8rem]";
+    mainContainer.appendChild(innerFlexContainer);
+
+    // Create and append the elements within the inner flex container
+    const iconDiv = document.createElement("div");
+    iconDiv.className = "text-[5.5rem] relative top-[10px]";
+    iconDiv.textContent = "⛅";
+    innerFlexContainer.appendChild(iconDiv);
+
+    const descriptionDiv = document.createElement("div");
+    descriptionDiv.className = "text-[2.7rem] -mt-[25px] font-semibold";
+    descriptionDiv.innerHTML = `<span>${city}</span> - <span>${main}</span>`;
+    innerFlexContainer.appendChild(descriptionDiv);
+
+    const temperatureDiv = document.createElement("div");
+    temperatureDiv.className = "relative top-[17px]";
+    temperatureDiv.innerHTML = `<span>Temperature: </span> - <span>${temp}°C</span>`;
+    innerFlexContainer.appendChild(temperatureDiv);
+
+    const feelsLikeDiv = document.createElement("div");
+    feelsLikeDiv.className = "relative top-[17px]";
+    feelsLikeDiv.innerHTML = `<span>Feels Like: </span> - <span>${feels_like}°C</span>`;
+    innerFlexContainer.appendChild(feelsLikeDiv);
+
+    const humidityDiv = document.createElement("div");
+    humidityDiv.className = "relative top-[17px]";
+    humidityDiv.innerHTML = `<span>Humidity: </span><span>${humidity}%</span>`;
+    innerFlexContainer.appendChild(humidityDiv);
+
+    main_tag.appendChild(mainContainer)
   }
 });
 
- async function get_weather_response(city, key) {
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}`;
-    let response = await fetch(apiURL);
-    if (!response.ok) {
-      throw new Error("Could Not Fetch Data");
-    } else {
-      return await response.json();
-    }
-  }
-
-  function get_weather_info(data) {
-    const { name: city, main: { temp, feels_like, humidity }, weather: [{ main }] } = data;
-    // console.log("City:", city);
-    // console.log("Temperature:", temp);
-    // console.log("Feels Like:", feels_like);
-    // console.log("Humidity:", humidity);
-    // console.log("Weather:", main);
-    console.log(data)
-  }
-
-
-
-  
-//next thing to do
-// -check if the city is correct
-//put the data into the block
-
-
-
-/*
-{coord: {…}, weather: Array(1), base: 'stations', main: {…}, visibility: 2000, …}
-base
-: 
-"stations"
-clouds
-: 
-{all: 40}
-cod
-: 
-200
-coord
-: 
-{lon: 74.3436, lat: 31.5497}
-dt
-: 
-1704462824
-id
-: 
-1172451
-main
-: 
-{temp: 283.14, feels_like: 283.14, temp_min: 282.21, temp_max: 283.14, pressure: 1018, …}
-name
-: 
-"Lahore"
-sys
-: 
-{type: 1, id: 7585, country: 'PK', sunrise: 1704420156, sunset: 1704456737}
-timezone
-: 
-18000
-visibility
-: 
-2000
-weather
-: 
-[{…}]
-wind
-: 
-{speed: 0, deg: 0}
-[[Prototype]]
-: 
-Object
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-//things to display
-
-/*
-Location and Weather Condition:
-
-Combine the "name" and "description" properties.
-Example: "Lahore - Clear Sky"
-Current Temperature:
-
-Display the current temperature.
-Example: "Temperature: 10.99°C"
-Feels Like Temperature:
-
-Display the feels-like temperature.
-Example: "Feels Like: 10.99°C"
-Humidity:
-
-Display the humidity percentage.
-Example: "Humidity: 81%"
-
-*/
+// apply emojis
+// apply celsius temperature
