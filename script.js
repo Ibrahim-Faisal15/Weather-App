@@ -51,7 +51,7 @@ search_button.addEventListener("click", async () => {
       throw new Error("Could Not Fetch Data");
     } else {
       return await response.json();
-      console.log(response.json());
+      
     }
   }
 
@@ -66,12 +66,6 @@ search_button.addEventListener("click", async () => {
 
   function display_weather_info(weatherData) {
     const { city, temp, feels_like, humidity, main, id } = weatherData;
-    console.log("City:", city);
-    console.log("Temperature:", temp);
-    console.log("Feels Like:", feels_like);
-    console.log("Humidity:", humidity);
-    console.log("Weather:", main);
-    console.log("id:", id);
 
     let weather_emoji = "";
     switch (true) {
@@ -149,7 +143,6 @@ search_button.addEventListener("click", async () => {
 });
 
 header_button.addEventListener("click", async () => {
-  console.log(`hello bro`);
 
   if (header_search.value !== "") {
     try {
@@ -200,12 +193,6 @@ header_button.addEventListener("click", async () => {
 
   function display_weather_info(weatherData) {
     const { city, temp, feels_like, humidity, main, id } = weatherData;
-    console.log("City:", city);
-    console.log("Temperature:", temp);
-    console.log("Feels Like:", feels_like);
-    console.log("Humidity:", humidity);
-    console.log("Weather:", main);
-    console.log("id:", id);
 
     let weather_emoji = "";
     switch (true) {
@@ -284,7 +271,7 @@ header_button.addEventListener("click", async () => {
         search_input.value == "";
         main_tag.appendChild(mainContainer2);
       } else {
-        console.log(444);
+        console.log(404);
       }
     } else {
       if (!main_tag.querySelector(".mainContainer")) {
