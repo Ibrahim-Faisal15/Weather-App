@@ -268,8 +268,8 @@ header_button.addEventListener("click", async () => {
         humidityDiv.innerHTML = `<span>Humidity: </span> <span> ${humidity}%</span>`;
         innerFlexContainer.appendChild(humidityDiv);
 
-        search_input.value == "";
         main_tag.appendChild(mainContainer2);
+        header_search.value == "";
       } else {
         console.log(404);
       }
@@ -317,7 +317,7 @@ header_button.addEventListener("click", async () => {
 
         main_tag.appendChild(mainContainer2);
         mainContainer2.removeChild(mainContainer2.firstChild);
-        search_input.value = "";
+        header_search.value = "";
       }
     }
   }
