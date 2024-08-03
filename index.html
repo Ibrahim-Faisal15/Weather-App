@@ -1,61 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style.css" rel="stylesheet" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/style.css" rel="stylesheet">
-</head>
+  <body
+    class="bg-gradient-to-t from-blue-900 via-grey-900 to-black bg-center h-[102vh]"
+  >
+    <nav class="flex items-center justify-between h-[20vh] -mt-[2vh]">
+      <div
+        class="logo sm:text-[3rem] text-white font-mono font-semibold text-4xl ml-14"
+      >
+        Sky<span
+          class="bg-gradient-to-r from-purple-900 to-indigo-500 bg-clip-text text-transparent"
+          >Snap</span
+        >
+      </div>
 
-<body class="bg-gradient-to-t from-blue-900 via-grey-900 to-black  bg-center h-[102vh] ">
-    <nav class="flex items-center justify-between h-[20vh] -mt-[2vh]   ">
-
-        <div class="logo  sm:text-[3rem]   text-white font-mono font-semibold text-4xl ml-14">
-            Sky<span class="bg-gradient-to-r from-purple-900 to-indigo-500 bg-clip-text text-transparent">Snap</span>
+      <div class="header_searchBar_and_button hidden">
+        <div>
+          <div class="flex">
+            <input
+              type="text"
+              class="header_search_bar max-w-[26vw] lg:ml-[50vw] xl::ml-[55vw] 2xl:ml-[75vw] ml-[40vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw]"
+            />
+            <input
+              type="image"
+              src="search_icon.svg"
+              class="header_input_btn h-[40px] bg-gray-800 p-2 rounded-tr-xl rounded-br-xl font-semibold hover:bg-gray-900 transition-colors text-white"
+            />
+          </div>
         </div>
+      </div>
 
-        <div class=" header_searchBar_and_button hidden">
-            <div>
-                <div class="flex ">
-                    <input type="text"
-                        class=" header_search_bar  max-w-[26vw]  lg:ml-[50vw]  xl::ml-[55vw] 2xl:ml-[75vw] ml-[40vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw]">
-                    <input type="image" src="search_icon.svg"
-                        class=" header_input_btn h-[40px]  bg-gray-800 p-2 rounded-tr-xl rounded-br-xl  font-semibold hover:bg-gray-900 transition-colors text-white">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="GitHub mr-14 text-white  mt-[5px]">
-            <a
-               href="https://github.com/Ibrahim-Faisal15?tab=overview&from=2024-01-01&to=2024-01-06" class=" w-[7vw] hover:bg-gray-800  px-4 py-2.5 font-sans flex items-center gap-2 border-none rounded-lg text-base  font-semibold transition-colors duration-200 bg-gray-900 hover:bg-dark-500 text-offwhite cursor-pointer">
-                <img src="nav-icon.svg" class=" w-[4.3rem] h-[1.8rem]">
-            </a>
-        </div>
-
+      <div class="GitHub mr-14 text-white mt-[5px]">
+        <a
+          href="https://github.com/Ibrahim-Faisal15?tab=overview&from=2024-01-01&to=2024-01-06"
+          class="w-[7vw] hover:bg-gray-800 px-4 py-2.5 font-sans flex items-center gap-2 border-none rounded-lg text-base font-semibold transition-colors duration-200 bg-gray-900 hover:bg-dark-500 text-offwhite cursor-pointer"
+        >
+          <img src="nav-icon.svg" class="w-[4.3rem] h-[1.8rem]" />
+        </a>
+      </div>
     </nav>
-    <main class=" main_tag h-[80vh] text-gray-300 flex justify-center items-center  ">
-        <div class="text_and_search text-[3rem] font-bold mb-[10rem]  flex-col items-center flex">
-            <span class="leading-[25px]">Enter your city to instantly</span>
-            <span class="leading-[80px]">check the current <span
-                    class="bg-gradient-to-r from-teal-400 to-sky-600 bg-clip-text text-transparent">weather</span>
-                forecast</span>
+    <main
+      class="main_tag h-[80vh] text-gray-300 flex justify-center items-center"
+    >
+      <div
+        class="text_and_search text-[3rem] font-bold mb-[10rem] flex-col items-center flex"
+      >
+        <span class="leading-[25px]">Enter your city to instantly</span>
+        <span class="leading-[80px]"
+          >check the current
+          <span
+            class="bg-gradient-to-r from-teal-400 to-sky-600 bg-clip-text text-transparent"
+            >weather</span
+          >
+          forecast</span
+        >
 
-            <div class="main_search_bar ">
-                <div>
-                    <div class="flex ">
-                        <input type="text" placeholder="Enter Location"
-                            class=" search_bar w-[30vw]  lg:ml-[1vw]  xl::ml-[55vw] 2xl:ml-[75vw] ml-[40vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw] h-[7vh]">
-                        <input type="image" src="search_icon.svg"
-                            class=" search_btn  bg-gray-800 p-2 rounded-tr-xl rounded-br-xl  font-semibold hover:bg-gray-900 transition-colors text-white h-[7vh]">
-                    </div>
-                </div>
+        <div class="main_search_bar">
+          <div>
+            <div class="flex relative right-[5vw]">
+              <input
+                type="text"
+                placeholder="Enter Location"
+                class="search_bar w-[30vw] pl-2 text-base font-semibold outline-0 rounded-s-xl text-white bg-gray-800 sm:ml-[10vw] h-[7vh]"
+              />
+              <input
+                type="image"
+                src="search_icon.svg"
+                class="search_btn bg-gray-800 p-2 rounded-tr-xl rounded-br-xl font-semibold hover:bg-gray-900 transition-colors text-white h-[7vh]"
+              />
             </div>
+          </div>
         </div>
-
+      </div>
     </main>
-
-</body>
-<script src="script.js"></script>
-
+  </body>
+  <script src="script.js"></script>
 </html>

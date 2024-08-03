@@ -16,7 +16,7 @@ let header_search = document.querySelector(".header_search_bar");
 let header_button = document.querySelector(".header_input_btn");
 
 //API key
-const api_key = "8ffa0bebcaefd6f8a9a365de79d992df";
+const api_key = null;
 
 search_button.addEventListener("click", async () => {
   if (search_input.value !== "") {
@@ -51,7 +51,6 @@ search_button.addEventListener("click", async () => {
       throw new Error("Could Not Fetch Data");
     } else {
       return await response.json();
-      
     }
   }
 
@@ -143,7 +142,6 @@ search_button.addEventListener("click", async () => {
 });
 
 header_button.addEventListener("click", async () => {
-
   if (header_search.value !== "") {
     try {
       let header_search_value = header_search.value;
